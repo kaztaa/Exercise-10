@@ -1,13 +1,13 @@
 function getCards(){
     // Shuffle a new deck of cards 
-    fullUri = "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1"
+    fullUri = 'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
     fetch(fullUri)
     .then(res => {
         // Check respons 
         if (!res.ok) {
-            throw new Error('Error, something wrong with api call');
+            throw new Error('Error, something wrong with api call')
         }
-        return res.json();
+        return res.json()
     })
     .then(data =>
     {
@@ -17,13 +17,13 @@ function getCards(){
         .then(res => {
             // Check respons 
             if (!res.ok) {
-                throw new Error('Error, something wrong with api call');
+                throw new Error('Error, something wrong with api call')
             }
-            return res.json();
+            return res.json()
         })
         .then(data =>
         {
-            document.getElementById("card").src = data.cards[0].image // Update img src with url to card image
+            document.querySelector('#card').src = data.cards[0].image // Update img src with url to card image
         })  
         .catch(err => console.log(err))
     })  
@@ -31,4 +31,4 @@ function getCards(){
  } 
 
 // Event (click) listener for button, calls the addToList function 
-document.getElementById("button").addEventListener("click", getCards);
+document.querySelector('#button').addEventListener('click', getCards)
